@@ -86,7 +86,7 @@ gulp.task('build',function(){
 });
 
 
-gulp.task('deploy',function(){
+gulp.task('deploy',['build'],function(){
 
     gulp.src('./dist/**', {read: false})
         .pipe(publishToS3());
