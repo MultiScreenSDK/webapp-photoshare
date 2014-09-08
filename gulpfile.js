@@ -86,7 +86,7 @@ gulp.task('clean', function() {
 gulp.task('build', ['clean'], function(){
 
     // For now this is just a copy but later may include less, js, ... compilation
-    gulp.src(paths.app+'**')
+    return gulp.src(paths.app+'**')
         .pipe(gulp.dest(paths.dist));
 
 });
@@ -94,7 +94,7 @@ gulp.task('build', ['clean'], function(){
 
 gulp.task('deploy',['build'],function(){
 
-    gulp.src('./dist/**', {read: false})
+    return gulp.src('./dist/**', {read: false})
         .pipe(publishToS3());
 
 });
