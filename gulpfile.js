@@ -5,17 +5,18 @@
 
 'use strict';
 
-var gulp = require('gulp'),
-    es = require('event-stream'),
+var gulp    = require('gulp'),
+    clean   = require('gulp-clean'),
+    es      = require('event-stream'),
     express = require('express'),
-    fs = require('fs'),
-    knox = require('knox'),
-    path = require('path');
+    fs      = require('fs'),
+    knox    = require('knox'),
+    path    = require('path');
 
 
 var paths = {
-    app : './app/',
-    dist : './dist/'
+    app     : './app/',
+    dist    : './dist/'
 };
 
 
@@ -77,7 +78,12 @@ gulp.task('dev-server',['build'], function(){
     });
 });
 
-gulp.task('build',function(){
+gulp.task('clean', function() {
+    return gulp.src( paths.dist , { read: false })
+        .pipe(clean());
+});
+
+gulp.task('build', ['clean'], function(){
 
     // For now this is just a copy but later may include less, js, ... compilation
     gulp.src(paths.app+'**')
