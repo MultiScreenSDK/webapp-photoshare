@@ -1,0 +1,5 @@
+node_modules
+resources
+test
+dist
+gulpfile.js

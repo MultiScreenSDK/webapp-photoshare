@@ -1,0 +1,27 @@
+{
+    "name": "msf-photoshare",
+    "displayName": "PhotoShare Test Server",
+    "version": "0.0.0",
+    "description": "Simple server for photoshare testing",
+    "homepage": "",
+    "repository": "",
+    "keywords": [
+        "util"
+    ],
+    "author": "Wheezy",
+    "private": true,
+    "scripts": {
+        "start" : "gulp",
+        "build" : "gulp build",
+        "test"  : "mocha",
+        "deploy": "gulp deploy"
+    },
+    "devDependencies": {
+        "express": "~3.4.6",
+        "knox": "~0.8.8",
+        "event-stream": "~3.1.0",
+        "gulp": "~3.5.2",
+        "mocha": "^1.21.4"
+    },
+    "engine": "node >= 0.10.15"
+}

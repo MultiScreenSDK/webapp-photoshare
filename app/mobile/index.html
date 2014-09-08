@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>PhotoShare</title>
+
+    <meta name="description" content="Samsung MultiScreen PhotoShare sample application">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../common/img/touch/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../common/img/touch/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../common/img/touch/touch-icon-ipad.png">
+    <link rel="apple-touch-icon-precomposed" href="../common/img/touch/icon.png">
+    <link rel="shortcut icon" href="../common/img/touch/icon.png">
+    <link rel="icon" type="image/png"  href="../common/img/touch/icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="../common/img/touch/img/touch/touch-icon-iphone-retina.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="../common/js/jquery.min.js"></script>
+    <script src="../common/js/utils.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+<body>
+
+    <div id="uiContainer">
+
+        <nav id="navMain">
+            <span class="icon"></span>
+            <h1>PHOTOSHARE</h1>
+            <button id="btnDiscover"></button>
+        </nav>
+
+        <div id="cntContainer">
+            <div id="photoContainer">
+                <img id="photo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+            </div>
+        </div>
+
+        <footer id="footerMain">
+            <button id="btnSelectFile" class="image-select">SELECT AN IMAGE</button>
+        </footer>
+
+    </div>
+
+    <div id="deviceWindow" class="device-window">
+        <div class="device-wrap">
+            <ul class="list-group device-list">
+                <li class="device-list-head"><img width="33" height="26" src="../common/img/icons/cast-off.png"><span>Connect to device</span> <span class="glyphicon glyphicon-refresh scan"></span> </li>
+                <li class="foundDevices">
+                    <ul>
+                        <li class="list-group-item placeholder">Searching for devices<span class="ellipsis"></span> </li>
+                    </ul>
+                </li>
+                <li class="device-list-cancel cancel">Cancel</li>
+                <li class="device-list-disconnect disconnect">Disconnect</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <input id="filePhoto" type="file" accept="image/*" />
+    <iframe id="winDiscovery" src="https://dev-multiscreen.samsung.com/discoveryservice/v2/discover" width="1" height="1" style="display: none"></iframe>
+</body>
+</html>
