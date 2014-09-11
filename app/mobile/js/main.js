@@ -7,7 +7,7 @@ $(function(){
 	
 	var btnDiscover = $('#btnDiscover').multiscreen({
 		channelName: 'photoshare',
-		appURL: "http://multiscreen-examples.s3-website-us-west-1.amazonaws.com/examples/photoshare/smarttv/",
+		appURL: "http://dev-multiscreen-examples.s3-website-us-west-1.amazonaws.com/examples/photoshare/smarttv/",
 		clientName: "WheezyMobile",
 		onopen : function (evt) {
             console.info("websocket open", evt);
