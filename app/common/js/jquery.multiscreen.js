@@ -106,25 +106,10 @@
 		this.onSelectDevice = function(service){
 			console.debug(service);
 			ms.trigger("deviceSelect", [service]);
-			ms.getApplication(service.uri);
+			ms.launchApplication(service.uri);
 			wrapper.hide();
 		};
-		
-		this.getApplication = function(serviceUri){
-			
-			$.get(serviceUri + 'webapplication/', function(application){
-				console.log("application: ", application);
-				
-				if(!application.running) {
-					ms.launchApplication(serviceUri);
-				}
 
-				setTimeout(function(){
-					ms.connect(serviceUri);
-				}, 1000);
-
-			});
-		};
 
 		this.launchApplication = function(serviceUri){
 		
@@ -134,12 +119,10 @@
 				data: {url: settings.appURL},
 				dataType:'json',
 				success:function(success){
-					if(success){
-
-					}
+					ms.connect(serviceUri);
 				},
 				error: function(error){
-					console.error(error);
+					alert('There was an error launching the application. The server responded with : '+error.status + ' : ' +error.statusText);
 				}
 			});
 			
