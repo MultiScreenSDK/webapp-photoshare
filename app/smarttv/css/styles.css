@@ -10,8 +10,8 @@ html, body {
 }
 
 body{
-    padding : 20px;
-    background: #000000;
+    padding : 80px;
+    background: #252525;
     overflow: hidden;
 }
 
@@ -22,6 +22,10 @@ body{
     font: 0/0 a;
 }
 
+#imgContainer.waiting{
+    background: transparent url(../../common/img/icons/photo-icon.png) no-repeat center;
+}
+
 #imgContainer:before{
     content: ' ';
     display: inline-block;
@@ -29,7 +33,7 @@ body{
     height: 100%;
 }
 
-img{
+#imgContainer img{
     border-radius: 5px;
     max-width: 100%;
     max-height: 100%;
@@ -42,13 +46,13 @@ img{
     transform: perspective(500px) translate3d(0px, 0px, 200px);
 }
 
-img.fadeIn{
+#imgContainer img.fadeIn{
     opacity:1;
     transform: perspective(500px) translate3d(0px, 0px, 0px);
     transition:1s cubic-bezier(0.1, 0.87, 0.48, 1);
 }
 
-img.fadeOut{
+#imgContainer img.fadeOut{
     opacity:0;
     transform: perspective(500px) translate3d(0px, 0px, 200px);
     transition:.4s ease-in;

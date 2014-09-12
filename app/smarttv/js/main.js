@@ -1,7 +1,7 @@
 $(function(){
 
-
     var currentImg;
+    var imgContainer = $('#imgContainer');
     var socket = new WebSocket('ws://127.0.0.1:8001/api/v2/channels/photoshare');
 
     socket.binaryType = "arraybuffer";
@@ -43,12 +43,13 @@ $(function(){
         var img = $('<img>');
         img.attr('src', url);
         img.one('load',onImageLoad);
-        img.appendTo($('#imgContainer'));
+
     }
 
     function onImageLoad(){
 
         var newImg = $(this);
+        newImg.appendTo(imgContainer);
 
         // Now we can clean up the url;
         //var URL = window.URL || window.webkitURL;
@@ -62,6 +63,7 @@ $(function(){
                 currentImg = newImg;
             });
         }else{
+            imgContainer.removeClass('waiting');
             newImg.addClass("fadeIn");
             currentImg = newImg;
         }
