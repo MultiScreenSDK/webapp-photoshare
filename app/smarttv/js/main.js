@@ -43,6 +43,8 @@ $(function(){
         img.attr('src', url);
         img.one('load',onImageLoad);
         img.appendTo($('#imgContainer'));
+
+        $('#imgContainer').removeClass();
     }
 
     function onImageLoad(){
