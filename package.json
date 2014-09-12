@@ -1,7 +1,7 @@
 {
   "name": "msf-photoshare",
   "displayName": "PhotoShare Test Server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple server for photoshare testing",
   "homepage": "",
   "repository": "",
