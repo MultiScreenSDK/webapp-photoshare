@@ -3,7 +3,7 @@
     $.fn.multiscreen = function( options ) {
 		
 		//listen for cloud discovery records
-		$('body').append('<iframe id="winDiscovery" src="https://dev-multiscreen.samsung.com/discoveryservice/v2/discover" width="1" height="1" style="display: none"></iframe>');
+		$('body').append('<iframe id="winDiscovery" src="http://dev-multiscreen.samsung.com/discoveryservice/v2/discover" width="1" height="1" style="display: none"></iframe>');
 		window.addEventListener('message', function(event){
 			if(event.data && event.data.event === 'discovery.ready'){
 			
