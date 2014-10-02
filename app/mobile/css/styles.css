@@ -51,23 +51,14 @@ body{
     vertical-align: top;
 }
 
-#btnDiscover{
-    background: transparent url(../../common/img/icons/cast-disabled.png) no-repeat;
-    background-size: contain;
+
+#btnCast{
     border: none;
     width: 32px;
     height: 32px;
     margin: 2px;
     float: right;
     vertical-align: top;
-}
-
-#btnDiscover.enabled{
-    background: transparent url(../../common/img/icons/cast-off.png) no-repeat;
-}
-
-#btnDiscover.connected{
-    background: transparent url(../../common/img/icons/cast-on.png) no-repeat;
 }
 
 #cntContainer{
