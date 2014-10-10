@@ -477,7 +477,7 @@
                 frame.setAttribute('width', '1');
                 frame.setAttribute('height', '1');
                 frame.style.display = "none";
-                frame.src = 'https://dev-multiscreen.samsung.com/discoveryservice/v2/discover';
+                frame.src = 'http://dev-multiscreen.samsung.com/discoveryservice/v2/discover';
                 document.body.appendChild(frame);
 
                 var readyListener = function(event){
