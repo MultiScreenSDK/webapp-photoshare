@@ -10,7 +10,7 @@ html, body {
 }
 
 body{
-    padding : 80px;
+    padding : 20px;
     background: #252525;
     overflow: hidden;
 }
@@ -41,8 +41,8 @@ body{
     display: inline-block;
     margin : 0 auto;
     backface-visibility: hidden;
-    transform-origin: 50% 50% 0px;
     opacity: 0;
+    transform-origin: 50% 50% 0px;
     transform: perspective(500px) translate3d(0px, 0px, 200px);
 }
 
