@@ -1,27 +1,24 @@
 $(function(){
 
+    "use strict";
+
+    var app;
     var prevImage;
     var imgContainer = $('#imgContainer');
 
-    var msf = $.msf({
-        appId     : window.location.href,
-        channelId : 'photoshare'
+    window.msf.local(function(err, service){
+
+        app = service.application(window.location.href);
+
+        app.connect({name: 'TV'}, function (err) {
+            if(err) return console.error(err);
+        });
+
+        app.on('showPhoto',function(msg, from, payload){
+            showPhoto(payload);
+        });
+
     });
-
-    msf.on('connect', function(evt, data){
-        console.info('connected!');
-    });
-
-    msf.on('error', function(error){
-        console.error(error);
-    });
-
-    msf.on('showPhoto',function(evt, msg, payload){
-        showPhoto(payload);
-    });
-
-    msf.connect();
-
 
     function showPhoto(abPhoto){
 
@@ -32,6 +29,9 @@ $(function(){
         var img = $('<img>');
         img.attr('src', url);
         img.one('load',function(){
+
+            imgContainer.removeClass('waiting');
+
             var newImg = $(this);
             if(prevImage){
                 prevImage.addClass("fadeOut");
@@ -49,6 +49,8 @@ $(function(){
     }
 
 });
+
+
 
 
 
