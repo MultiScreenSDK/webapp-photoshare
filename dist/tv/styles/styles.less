@@ -1,0 +1,77 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin : 0;
+  padding : 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+
+
+*:focus {outline:none;}
+
+html, body {
+  width : 100%;
+  height : 100%;
+  overflow: hidden;
+}
+
+body{
+  background : #4285f4;
+  display : flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  font: normal 14px Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color : #fff;
+  padding : 2em;
+}
+
+#imgContainer{
+  width : 100%;
+  height : 100%;
+  text-align:center;
+  font: 0/0 a;
+}
+
+#imgContainer.waiting{
+  background: transparent url(../images/photo-placeholder.png) no-repeat center;
+}
+
+#imgContainer:before{
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+#imgContainer img{
+  box-shadow: 5px 5px 5px rgba(0,0,0,.7);
+  border-radius: 5px;
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  margin : 0 auto;
+  backface-visibility: hidden;
+  opacity: 0;
+  transform-origin: 50% 50% 0px;
+  transform: perspective(500px) translate3d(0px, 0px, 200px);
+}
+
+#imgContainer img.fadeIn{
+  opacity:1;
+  transform: perspective(500px) translate3d(0px, 0px, 0px);
+  transition:1s cubic-bezier(0.1, 0.87, 0.48, 1);
+}
+
+#imgContainer img.fadeOut{
+  opacity:0;
+  transform: perspective(500px) translate3d(0px, 0px, 200px);
+  transition:.4s ease-in;
+
+}
