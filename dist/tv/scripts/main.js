@@ -2,19 +2,18 @@ $(function(){
 
     "use strict";
 
-    var app;
     var prevImage;
     var imgContainer = $('#imgContainer');
 
     window.msf.local(function(err, service){
 
-        app = service.application(window.location.href);
+        var channel = service.channel('com.samsung.multiscreen.photoshare');
 
-        app.connect({name: 'TV'}, function (err) {
+        channel.connect({name: 'TV'}, function (err) {
             if(err) return console.error(err);
         });
 
-        app.on('showPhoto',function(msg, from, payload){
+        channel.on('showPhoto',function(msg, from, payload){
             showPhoto(payload);
         });
 
