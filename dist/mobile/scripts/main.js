@@ -4,6 +4,7 @@ $(function () {
 
     var username = navigator.userAgent.match(/(opera|chrome|safari|firefox|msie)/i)[0] + ' User';
     var app;
+    var EXIF = window.EXIF;
 
     var ui = {
         castButton          : $('#castButton'),
@@ -14,7 +15,8 @@ $(function () {
         castButtonRescan    : $('#castSettings button.search'),
         btnSelectPhoto      : $("#btnSelectFile"),
         filePhoto           : $("#filePhoto"),
-        contentContainer    : $("#cntMain")
+        contentContainer    : $("#cntMain"),
+        selectedImg         : $("#imgSelected")
     };
 
 
@@ -100,13 +102,36 @@ $(function () {
             var files = event.target.files;
             var file;
             if (files && files.length > 0) {
+
                 file = files[0];
-                var URL = window.URL || window.webkitURL;
-                var url = URL.createObjectURL(file);
 
-                ui.contentContainer.css("background-image",'url('+url+')');
-
+                // Publish the file to the channel
                 app.publish('showPhoto', {}, 'broadcast', file);
+
+                // Use the exif data to correct any orientation issues
+                EXIF.getData(file, function() {
+
+                    console.log(EXIF.pretty(this));
+
+                    var o = EXIF.getTag(this,'Orientation');
+
+                    var tMap = [];
+                    tMap[2] = 'rotate3d(0, 1, 0, 180deg)';
+                    tMap[3] = 'rotate3d(0, 0, 1, 180deg)';
+                    tMap[4] = 'rotate3d(1, 0, 0, 180deg)';
+                    tMap[5] = 'rotate3d(1, 1, 0, 180deg)';
+                    tMap[6] = 'rotate3d(0, 0, 1, 90deg)';
+                    tMap[7] = 'rotate3d(1, -1, 0, 180deg)';
+                    tMap[8] = 'rotate3d(0, 0, -1, 90deg)';
+
+                    if(tMap[o]) ui.selectedImg.css('transform',tMap[o]);
+                    else ui.selectedImg.css('transform','rotate3d(0, 0, 0, 0deg)');
+
+                });
+
+                // Create a url from the blob and update the onscreen image
+                var URL = window.URL || window.webkitURL;
+                ui.selectedImg.attr('src',URL.createObjectURL(file));
             }
         });
 

@@ -1,9 +1,28 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 @import "mixins";
 
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin : 0;
+    padding : 0;
+}
+
+*:not(input.field) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+*:focus {outline:none;}
+
+
 html, body {
     width : 100%;
     height : 100%;
+    overflow: hidden;
 }
 
 h1,h2,h3,h4,h5{
@@ -41,6 +60,23 @@ body{
     position: relative;
     font: normal 12px Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+    #imgBackground{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        img{
+            flex-shrink: 0;
+            min-width: 100%;
+            min-height: 100%;
+            opacity: .3;
+        }
+    }
+
     section, header{
         padding : 1em;
     }
@@ -50,6 +86,7 @@ body{
     }
 
     #wrapper{
+
         width:100%;
         height: 100%;
         .flexbox();
