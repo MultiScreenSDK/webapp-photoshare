@@ -99,39 +99,15 @@ $(function () {
         });
 
         ui.filePhoto.on('change', function(event){
-            var files = event.target.files;
-            var file;
-            if (files && files.length > 0) {
-
-                file = files[0];
+            var file = event.target.files[0];
+            if (file) {
 
                 // Publish the file to the channel
                 app.publish('showPhoto', {}, 'broadcast', file);
 
-                // Use the exif data to correct any orientation issues
-                EXIF.getData(file, function() {
-
-                    console.log(EXIF.pretty(this));
-
-                    var o = EXIF.getTag(this,'Orientation');
-
-                    var tMap = [];
-                    tMap[2] = 'rotate3d(0, 1, 0, 180deg)';
-                    tMap[3] = 'rotate3d(0, 0, 1, 180deg)';
-                    tMap[4] = 'rotate3d(1, 0, 0, 180deg)';
-                    tMap[5] = 'rotate3d(1, 1, 0, 180deg)';
-                    tMap[6] = 'rotate3d(0, 0, 1, 90deg)';
-                    tMap[7] = 'rotate3d(1, -1, 0, 180deg)';
-                    tMap[8] = 'rotate3d(0, 0, -1, 90deg)';
-
-                    if(tMap[o]) ui.selectedImg.css('transform',tMap[o]);
-                    else ui.selectedImg.css('transform','rotate3d(0, 0, 0, 0deg)');
-
-                });
-
                 // Create a url from the blob and update the onscreen image
                 var URL = window.URL || window.webkitURL;
-                ui.selectedImg.attr('src',URL.createObjectURL(file));
+                ui.contentContainer.css("background-image",'url('+URL.createObjectURL(file)+')');
             }
         });
 

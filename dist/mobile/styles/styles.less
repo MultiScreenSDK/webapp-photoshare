@@ -60,23 +60,6 @@ body{
     position: relative;
     font: normal 12px Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-    #imgBackground{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-
-        img{
-            flex-shrink: 0;
-            min-width: 100%;
-            min-height: 100%;
-            opacity: .3;
-        }
-    }
-
     section, header{
         padding : 1em;
     }
@@ -94,6 +77,8 @@ body{
         .flexalignitems(stretch);
 
         section{
+            background-repeat: no-repeat;
+            background-size: cover;
 
             .flexbox();
             .flexflow(column wrap);
