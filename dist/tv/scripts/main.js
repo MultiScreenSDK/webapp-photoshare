@@ -57,13 +57,13 @@ $(function(){
 
             var newImg = $(this);
             if(prevImage){
-                prevImage.fadeOut(1000,function(){
+                prevImage.fadeOut(400,function(){
                     $(this).remove();
-                    newImg.fadeIn(1000);
+                    newImg.fadeIn(400);
                     prevImage = newImg;
                 });
             }else{
-                newImg.fadeIn(1000);
+                newImg.fadeIn(400);
                 prevImage = newImg;
             }
 
