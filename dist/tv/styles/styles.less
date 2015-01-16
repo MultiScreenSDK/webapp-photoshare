@@ -1,47 +1,3 @@
-.flexbox() {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
-
-.flexflow(@values) {
-  -webkit-flex-flow: @values;
-  -moz-flex-flow:  @values;
-  -ms-flex-flow:  @values;
-  flex-flow:  @values;
-}
-
-.flexalignitems(@values) {
-  -webkit-align-items: @values;
-  -moz-align-items:  @values;
-  -ms-align-items:  @values;
-  align-items:  @values;
-}
-
-.flexaligncontent(@values) {
-  -webkit-align-content: @values;
-  -moz-align-content:  @values;
-  -ms-align-content:  @values;
-  align-content:  @values;
-}
-
-.flexjustifycontent(@values) {
-  -webkit-justify-content: @values;
-  -moz-justify-content:  @values;
-  -ms-justify-content:  @values;
-  justify-content:  @values;
-}
-
-.flex(@values) {
-  -webkit-box-flex: @values;
-  -moz-box-flex:  @values;
-  -webkit-flex:  @values;
-  -ms-flex:  @values;
-  flex:  @values;
-}
-
 *, *:before, *:after {
   box-sizing: border-box;
   margin : 0;
@@ -59,61 +15,36 @@
 html, body {
   width : 100%;
   height : 100%;
-  overflow: hidden;
 }
 
 body{
-  background : #4285f4;
-  .flexbox();
-  .flexflow(column wrap);
-  .flexalignitems(center);
-  .flexjustifycontent(center);
   font: normal 14px Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color : #fff;
-  padding : 2em;
+  overflow: hidden;
+  background : #000000;
 }
 
 #imgContainer{
   width : 100%;
   height : 100%;
-  text-align:center;
-  font: 0/0 a;
+  display:flex;
+  display: -webkit-flex;
+  justify-content:center;
+  -webkit-justify-content:center;
+  align-items:center;
+  -webkit-align-items:center;
+  overflow:hidden
 }
 
 #imgContainer.waiting{
   background: transparent url(../images/photo-placeholder.png) no-repeat center;
-}
-
-#imgContainer:before{
-  content: ' ';
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
+  background-size: auto 50%;
 }
 
 #imgContainer img{
-  box-shadow: 5px 5px 5px rgba(0,0,0,.7);
-  border-radius: 5px;
-  max-width: 100%;
-  max-height: 100%;
-  vertical-align: middle;
-  display: inline-block;
-  margin : 0 auto;
-  backface-visibility: hidden;
-  opacity: 0;
-  transform-origin: 50% 50% 0px;
-  transform: perspective(500px) translate3d(0px, 0px, 200px);
-}
-
-#imgContainer img.fadeIn{
-  opacity:1;
-  transform: perspective(500px) translate3d(0px, 0px, 0px);
-  transition:1s cubic-bezier(0.1, 0.87, 0.48, 1);
-}
-
-#imgContainer img.fadeOut{
-  opacity:0;
-  transform: perspective(500px) translate3d(0px, 0px, 200px);
-  transition:.4s ease-in;
-
+  flex-shrink:0;
+  -webkit-flex-shrink:0;
+  max-width:100%;
+  max-height:100%;
+  display:none;
 }
