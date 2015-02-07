@@ -27,6 +27,7 @@ $(function () {
         var tvAppUrl = window.location.href.replace('/mobile','/tv');
 
         app = service.application(tvAppUrl, 'com.samsung.multiscreen.photoshare');
+        app.setConnectionTimeout(5000);
 
         app.connect({name: username}, function (err) {
             if(err) return console.error(err);
